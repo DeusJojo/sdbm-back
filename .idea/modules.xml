@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sdbm.iml" filepath="$PROJECT_DIR$/.idea/sdbm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdbm/sdbm.iml" filepath="$PROJECT_DIR$/sdbm/sdbm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sdbm-back.iml" filepath="$PROJECT_DIR$/.idea/sdbm-back.iml" />
     </modules>
   </component>
 </project>
