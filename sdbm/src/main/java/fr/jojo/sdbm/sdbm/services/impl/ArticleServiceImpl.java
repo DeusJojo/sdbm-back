@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
-    ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
 
     @Override
     public List<ArticleDto> getAllArticles() {
@@ -32,5 +32,19 @@ public class ArticleServiceImpl implements ArticleService {
                     .orElseThrow(() ->
                             new RuntimeException(("L'article avec l'id " + articleId + " n'existe pas.")));
             return Optional.ofNullable(modelMapper.map(article, ArticleDto.class));
+    }
+
+//    @Override
+//    public Optional<List<ArticleDto>> searchByKeyword(String keyWord) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        List<Article> articles = articleRepository.searchByKeyword(keyWord);
+//        return Optional.of(articles.stream().map(article -> modelMapper.map(article, ArticleDto.class)).toList());
+//    }
+
+    @Override
+    public Optional<List<ArticleDto>> getArticleByNomArticle(String keyWord) {
+        ModelMapper modelMapper = new ModelMapper();
+        List<Article> articles = articleRepository.getArticleByNomArticle(keyWord);
+        return Optional.of(articles.stream().map(article -> modelMapper.map(article, ArticleDto.class)).toList());
     }
 }

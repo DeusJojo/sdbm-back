@@ -20,7 +20,7 @@ public class ArticleController {
 
     private ArticleService articleService;
 
-    @GetMapping("articles")
+    @GetMapping("/articles")
     public ResponseEntity<List<ArticleDto>> getAllArticles(){
         List<ArticleDto> articleDtoList = articleService.getAllArticles();
         return ResponseEntity.ok(articleDtoList);
@@ -32,8 +32,17 @@ public class ArticleController {
         if(articleDto.isPresent()){
             return ResponseEntity.ok(articleDto.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aucun article trouvé.");
         }
+    }
 
+    @GetMapping("articles/{nom}")
+    public ResponseEntity<?> getArticleByNomArticle(@PathVariable("nom") String keyWord){
+        Optional<List<ArticleDto>> articleDtos = articleService.getArticleByNomArticle(keyWord);
+        if(articleDtos.isPresent()){
+            return ResponseEntity.ok(articleDtos.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aucun article trouvé.");
+        }
     }
 }

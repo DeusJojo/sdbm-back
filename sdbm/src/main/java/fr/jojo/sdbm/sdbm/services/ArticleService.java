@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface ArticleService {
     List<ArticleDto> getAllArticles();
-//    ArticleDto getArticleById(Integer articleId);
     Optional<ArticleDto> getArticleById(Integer articleId);
+//    Optional<List<ArticleDto>> searchByKeyword(String keyWord);
+    Optional<List<ArticleDto>> getArticleByNomArticle(String keyWord);
 }
